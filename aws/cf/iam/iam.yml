@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: A template for managing IAM
+Resources:
+  DevGroup:
+    Type: AWS::IAM::Group
+  DevFullAccessPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: dev-devgroup-fullaccess-iam-policy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - 'apiGateway:*'
+          - 's3:*'
+          - 'lambda:*'
+          - 'dynamodb:*'
+          Resource: '*'
+      Groups:
+      - !Ref DevGroup
+
